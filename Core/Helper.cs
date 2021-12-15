@@ -9,10 +9,7 @@ namespace Core
     {
         public static string GetConStr(string name)
         {
-            
-            var strings = ConfigurationManager.ConnectionStrings;
-            var output = strings[name].ConnectionString;
-            return output;
+            return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
     }
 }

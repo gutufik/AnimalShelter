@@ -1,25 +1,25 @@
 ﻿@using Core;
-@model List<Aviary>
-<h2>Aviaries</h2>
+@model List<Animal>
+<h2>Animals</h2>
 
 <div class="row">
-    @foreach (var aviary in Model)
+    @foreach (var animal in Model)
     {
         <div class="col-md-4 mb-5">
             <div class="card h-100">
                 <div class="card-body">
                     <div>
                         <img class="card-img-top" src="~/images/project_icon.jpg"
-                             alt="@aviary.Name" />
+                             alt="@animal.Name" />
                     </div>
                     <div>
-                        <p class="font-weight-normal">@aviary.Name</p>
+                        <p class="font-weight-normal">@animal.Name</p>
                     </div>
                     <div class="text-center">
-                        <a class="btn btn-danger" asp-controller="Aviary"
-                           asp-action="Animals" asp-route-id="@aviary.AviaryID"
+                        <a class="btn btn-danger" asp-controller="Project"
+                           asp-action="Remove" asp-route-id="@animal.ID"
                            role="button">
-                            Показать животных
+                            Remove
                         </a>
                     </div>
                 </div>

@@ -16,5 +16,24 @@ namespace Core
                 return connection.Query<Animal>("select * from Animal").AsList();
             }
         }
+        public static List<Aviary> GetAviaries()
+        {
+            using (IDbConnection connection = new SqlConnection(Helper.GetConStr("AnimalDB")))
+            {
+                return connection.Query<Aviary>("select * from Aviary").AsList();
+            }
+        }
+        public static List<Animal> GetAnimalsInAviary(int id)
+        {
+            using (IDbConnection connection = new SqlConnection(Helper.GetConStr("AnimalDB")))
+            {
+                return connection.Query<Animal>("select an.AnimalID, an.[Name] from [dbo].[Animal] an" +
+                                                " join[dbo].[AviaryAnimal] aa " +
+                                                "on aa.AnimalID = an.AnimalID " +
+                                                "join [dbo].[Aviary] av " +
+                                                "on aa.AviaryID = av.AviaryID " +
+                                                $"where av.AviaryID = {id}").AsList();
+            }
+        }
     }
 }
