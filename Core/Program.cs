@@ -33,8 +33,8 @@ namespace Core
 
     public class Food
     {
-        int ID;
-        string Name;
+        public int FoodID { get; set; }
+        public string FoodName { get; set; }
     }
 
     public class User

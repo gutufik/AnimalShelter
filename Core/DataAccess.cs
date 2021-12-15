@@ -35,5 +35,12 @@ namespace Core
                                                 $"where av.AviaryID = {id}").AsList();
             }
         }
+        public static List<Food> GetFood()
+        {
+            using (IDbConnection connection = new SqlConnection(Helper.GetConStr("AnimalDB")))
+            {
+                return connection.Query<Food>("select * from Food").AsList();
+            }
+        }
     }
 }
