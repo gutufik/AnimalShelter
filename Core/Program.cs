@@ -37,12 +37,5 @@ namespace Core
         public string FoodName { get; set; }
     }
 
-    public class User
-    {
-        int ID;
-        string Name;
-        string Login;
-        string Password;
-    }
 
 }
