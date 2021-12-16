@@ -32,6 +32,8 @@ namespace AnimalShelter.Controllers
                 }
                 ModelState.AddModelError("", "Некорректные логин и(или) пароль");
             }
+            else
+                ModelState.AddModelError("", "Введите логин и пароль");
             return View(model);
         }
         [HttpGet]
@@ -50,6 +52,8 @@ namespace AnimalShelter.Controllers
 
                 ModelState.AddModelError("", "Некорректные логин и(или) пароль");
             }
+            else
+                ModelState.AddModelError("", "Проверьте правильность введнных данных");
             return View(model);
         }
     }

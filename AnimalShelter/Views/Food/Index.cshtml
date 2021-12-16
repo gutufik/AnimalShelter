@@ -1,18 +1,22 @@
 ﻿@using Core;
 @model List<Food>
 <h2>Food</h2>
+<div class="row justify-content-end">
+    <a class="btn btn-primary" asp-controller="Project"
+       asp-action="Add" role="button">Add project</a>
+</div><br />
 
 
 <table style="width:60%">
     <tr>
-        <th>Company</th>
-        <th>Contact</th>
+        <th>Наименование</th>
+        <th>Остаток</th>
     </tr>
     @foreach (var f in Model)
     {
         <tr>
-            <td>@f.FoodID</td>
             <td>@f.FoodName</td>
+            <td>@f.Weight</td>
         </tr>
     }
 </table>

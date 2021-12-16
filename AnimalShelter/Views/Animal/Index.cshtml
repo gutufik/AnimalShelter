@@ -1,6 +1,10 @@
 ﻿@using Core; 
 @model List<Animal> 
 <h2>Animals</h2>
+<div class="row justify-content-end">
+    <a class="btn btn-primary" asp-controller="Project"
+       asp-action="Add" role="button">Add project</a>
+</div><br />
 
 <div class="row">
     @foreach (var animal in Model)
@@ -16,10 +20,15 @@
                         <p class="font-weight-normal">@animal.Name</p>
                     </div>
                     <div class="text-center">
-                        <a class="btn btn-danger" asp-controller="Project"
-                           asp-action="Remove" asp-route-id="@animal.ID"
+                        <a class="btn btn-danger" asp-controller="Animal"
+                           asp-action="Remove" asp-route-id="@animal.AnimalID"
                            role="button">
-                            Remove
+                            Забрать
+                        </a>
+                        <a class="btn btn-secondary" asp-controller="Animal"
+                           asp-action="Remove" asp-route-id="@animal.AnimalID"
+                           role="button">
+                            Покормить
                         </a>
                     </div>
                 </div>

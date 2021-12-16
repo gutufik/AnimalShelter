@@ -14,7 +14,7 @@ namespace Core
     }
     public class Animal
     {
-        public int ID { get; set; }
+        public int AnimalID { get; set; }
         
         public string Name { get; set; }
     }
@@ -35,6 +35,7 @@ namespace Core
     {
         public int FoodID { get; set; }
         public string FoodName { get; set; }
+        public int Weight { get; set; }
     }
 
 

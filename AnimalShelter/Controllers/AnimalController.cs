@@ -13,5 +13,10 @@ namespace AnimalShelter.Controllers
         {
             return View(DataAccess.GetAnimals());
         }
+        public IActionResult Remove(int id)
+        {
+            DataAccess.DeleteAnimal(id);
+            return RedirectToAction("Index",DataAccess.GetAnimals());
+        }
     }
 }

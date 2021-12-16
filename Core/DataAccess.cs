@@ -52,7 +52,10 @@ namespace Core
             {
                 return false;
             }
-            
+        }
+        public static void DeleteAnimal(int id)
+        {
+            connection.Query($"delete from [dbo].[Animal] where [AnimalID] = {id}");
         }
     }
 }
