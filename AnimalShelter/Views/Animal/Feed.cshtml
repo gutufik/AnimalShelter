@@ -9,8 +9,6 @@
         <div class="form-group">
             <label >@Model.animal.Name</label>
             <input type="hidden" asp-for="diet.AnimalID" value=@Model.animal.AnimalID>
-            @*<input type="text" asp-for="Name"/>
-        <span asp-validation-for="Name" />*@
         </div>
         <div class="form-group">
             <select asp-for="diet.FoodID">
@@ -19,12 +17,9 @@
                     <option value="@f.FoodID">@f.FoodName</option>
                 }
             </select>
-            @*<label asp-for="Password">Введите пароль</label>
-            <input asp-for="Password" />
-            <span asp-validation-for="Password" />*@
         </div>
         <div class="form-group">
-            <label asp-for="diet.Weight">Вес</label>
+            <label asp-for="diet.Weight">Вес</label><br />
             <input type="text" asp-for="diet.Weight" />
         </div>
         <div class="form-group">

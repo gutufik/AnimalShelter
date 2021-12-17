@@ -1,9 +1,15 @@
-﻿@using Core;
-@model List<Animal>
-<h2>Animals</h2>
+﻿@model Core.ViewModels.AviaryModel
+<h2>Животные в вольере</h2>
+<input type="hidden" asp-for="aviary.AviaryID" value=@Model.aviary.AviaryID>
+<div class="row justify-content-end">
+    <a class="btn btn-primary" asp-controller="Aviary"
+       asp-action="AddAnimal" asp-route-aviaryID=@Model.aviary.AviaryID role="button">Добавить</a>
+</div>
+<br />
 
 <div class="row">
-    @foreach (var animal in Model)
+    
+    @foreach (var animal in Model.animals)
     {
         <div class="col-md-4 mb-5">
             <div class="card h-100">
@@ -16,11 +22,12 @@
                         <p class="font-weight-normal">@animal.Name</p>
                     </div>
                     <div class="text-center">
-                        <a class="btn btn-danger" asp-controller="Project"
-                           asp-action="Remove" asp-route-id="@animal.AnimalID"
+                        <a class="btn btn-danger" asp-controller="Aviary"
+                           asp-action="Remove" asp-route-animalID=@animal.AnimalID
                            role="button">
-                            Remove
+                            Забрать
                         </a>
+
                     </div>
                 </div>
             </div>

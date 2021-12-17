@@ -81,5 +81,35 @@ namespace Core
         {
             connection.Query($"update [dbo].[Animal] set [Name] = '{a.Name}' where [AnimalID] = {id}");
         }
+        public static void AddFood(Food food) 
+        {
+            connection.Query($"insert into [dbo].[Food]" +
+                            $"([FoodName], [Weight])" +
+                            $"values ('{food.FoodName}',{food.Weight})");
+        }
+        public static int RemoveAnimalFromAviary(int animalID)
+        {
+            int aviaryID = connection.Query<int>("select [AviaryID] from [dbo].[AviaryAnimal] " +
+                                                    $"where[AnimalID] = {animalID}").AsList()[0];
+            connection.Query("delete from [dbo].[AviaryAnimal] " +
+                                $"where [AnimalID] = {animalID}");
+            return aviaryID;
+        }
+        public static void AddAviary()
+        {
+            connection.Query("insert into [dbo].[Aviary] ([Name]) values ('')");
+        }
+        public static void AddAnimalToAviary(AviaryModel model)
+        {
+            connection.Query("insert into [dbo].[AviaryAnimal] ([AviaryID], [AnimalID]) " +
+                             $"values({model.aviary.AviaryID},{model.animal.AnimalID})");
+        }
+        public static List<Animal> GetHomelessAnimals()
+        {
+            return connection.Query<Animal>($"select a.[AnimalID], a.[Name] from [dbo].[Animal] a" +
+                                            $" full join [dbo].[AviaryAnimal] aa " +
+                                            $"on a.[AnimalID] = aa.[AnimalID] " +
+                                            $"where aa.[AnimalID] is null").AsList();
+        }
     }
 }

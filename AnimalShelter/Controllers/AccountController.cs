@@ -10,11 +10,6 @@ namespace AnimalShelter.Controllers
 {
     public class AccountController : Controller
     {
-        //private  UserContext db;
-        //public AccountController(UserContext context)
-        //{
-        //    db = context;
-        //}
         [HttpGet]
         public IActionResult Login()
         {

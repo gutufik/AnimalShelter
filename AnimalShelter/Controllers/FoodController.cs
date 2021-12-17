@@ -13,5 +13,15 @@ namespace AnimalShelter.Controllers
         {
             return View(DataAccess.GetFood());
         }
+        public IActionResult Add()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Add(Food food)
+        {
+            DataAccess.AddFood(food);
+            return RedirectToAction("Index", DataAccess.GetFood());
+        }
     }
 }

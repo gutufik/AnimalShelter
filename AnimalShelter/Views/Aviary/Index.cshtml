@@ -1,7 +1,12 @@
 ﻿@using Core;
 @model List<Aviary>
-<h2>Aviaries</h2>
+<h2>Вольеры</h2>
 
+<div class="row justify-content-end">
+    <a class="btn btn-primary" asp-controller="Aviary"
+       asp-action="AddAviary" role="button">Добавить</a>
+</div>
+<br />
 
 <div class="row">
     @foreach (var aviary in Model)
@@ -18,7 +23,7 @@
                     </div>
                     <div class="text-center">
                         <a class="btn btn-danger" asp-controller="Aviary"
-                           asp-action="Animals" asp-route-id="@aviary.AviaryID"
+                           asp-action="Animals" asp-route-aviaryID="@aviary.AviaryID"
                            role="button">
                             Показать животных
                         </a>

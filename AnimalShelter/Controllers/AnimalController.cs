@@ -34,5 +34,15 @@ namespace AnimalShelter.Controllers
             DataAccess.AddDiet(feed);
             return RedirectToAction("Index", DataAccess.GetAnimals());
         }
+        public IActionResult Add()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Add(Animal animal)
+        {
+            DataAccess.AddAnimal(animal);
+            return RedirectToAction("Index", DataAccess.GetAnimals());
+        }
     }
 }
