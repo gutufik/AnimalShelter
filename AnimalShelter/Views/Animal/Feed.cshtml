@@ -1,0 +1,34 @@
+﻿@model Core.ViewModels.FeedModel
+
+<h2>Покормить</h2>
+
+<form asp-action="Feed" asp-controller="Animal" asp-anti-forgery="true">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <div>
+
+        <div class="form-group">
+            <label >@Model.animal.Name</label>
+            <input type="hidden" asp-for="diet.AnimalID" value=@Model.animal.AnimalID>
+            @*<input type="text" asp-for="Name"/>
+        <span asp-validation-for="Name" />*@
+        </div>
+        <div class="form-group">
+            <select asp-for="diet.FoodID">
+                @foreach (var f in Model.foods)
+                {
+                    <option value="@f.FoodID">@f.FoodName</option>
+                }
+            </select>
+            @*<label asp-for="Password">Введите пароль</label>
+            <input asp-for="Password" />
+            <span asp-validation-for="Password" />*@
+        </div>
+        <div class="form-group">
+            <label asp-for="diet.Weight">Вес</label>
+            <input type="text" asp-for="diet.Weight" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Покормить" class="btn btn-outline-dark" />
+        </div>
+    </div>
+</form>

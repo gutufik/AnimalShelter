@@ -57,5 +57,29 @@ namespace Core
         {
             connection.Query($"delete from [dbo].[Animal] where [AnimalID] = {id}");
         }
+        public static Animal GetAnimal(int id)
+        {
+            try
+            {
+                return connection.Query<Animal>($"select * from [dbo].[Animal]" +
+                $" where [AnimalID] = {id}").AsList()[0];
+            }
+            catch { return null; }
+            
+        }
+        public static void AddDiet(FeedModel model)
+        {
+            connection.Query("insert into [dbo].[Diet] " +
+                            "([AnimalID],[Date],[FoodID],[Weight]) " +
+                            $"values ({model.diet.AnimalID},'{DateTime.Now}',{model.diet.FoodID},{model.diet.Weight})");
+        }
+        public static void AddAnimal(Animal a)
+        {
+            connection.Query($"insert into [dbo].[Animal] ([Name]) values ('{a.Name}')");
+        }
+        public static void UpdateAnimal(int id,Animal a)
+        {
+            connection.Query($"update [dbo].[Animal] set [Name] = '{a.Name}' where [AnimalID] = {id}");
+        }
     }
 }

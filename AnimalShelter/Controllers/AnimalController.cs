@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core;
+using Core.ViewModels;
 
 namespace AnimalShelter.Controllers
 {
@@ -17,6 +18,21 @@ namespace AnimalShelter.Controllers
         {
             DataAccess.DeleteAnimal(id);
             return RedirectToAction("Index",DataAccess.GetAnimals());
+        }
+        public IActionResult Feed(int id)
+        {
+            var feedModel = new FeedModel()
+            {
+                animal = DataAccess.GetAnimal(id),
+                foods = DataAccess.GetFood()
+            };
+            return View(feedModel);
+        }
+        [HttpPost]
+        public IActionResult Feed(FeedModel feed)
+        {
+            DataAccess.AddDiet(feed);
+            return RedirectToAction("Index", DataAccess.GetAnimals());
         }
     }
 }
