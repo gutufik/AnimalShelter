@@ -15,20 +15,20 @@ namespace Core
         private static IDbConnection connection = new SqlConnection(connStr);
         public static List<Animal> GetAnimals()
         {
-            return connection.Query<Animal>("select * from Animal").AsList();
+            return connection.Query<Animal>("select AnimalID, Name from Animal").AsList();
         }
         public static List<Aviary> GetAviaries()
         {
             return connection.Query<Aviary>("select * from Aviary").AsList();
         }
-        public static List<Animal> GetAnimalsInAviary(int id)
+        public static List<Animal> GetAnimalsInAviary(int aviaryId)
         {
             return connection.Query<Animal>("select an.AnimalID, an.[Name] from [dbo].[Animal] an" +
                                             " join[dbo].[AviaryAnimal] aa " +
                                             "on aa.AnimalID = an.AnimalID " +
                                             "join [dbo].[Aviary] av " +
                                             "on aa.AviaryID = av.AviaryID " +
-                                            $"where av.AviaryID = {id}").AsList();
+                                            $"where av.AviaryID = {aviaryId}").AsList();
         }
         public static List<Food> GetFood()
         {
@@ -36,6 +36,7 @@ namespace Core
         }
         public static bool IsLoginCorrect(LoginModel model)
         {
+            
             return connection.Query<User>("SELECT * FROM [dbo].[User] u " +
                                             $"where u.[Email] = '{model.Email}'" +
                                             $"and u.[Password] = '{model.Password}'").AsList().Count > 0;
@@ -110,6 +111,15 @@ namespace Core
                                             $" full join [dbo].[AviaryAnimal] aa " +
                                             $"on a.[AnimalID] = aa.[AnimalID] " +
                                             $"where aa.[AnimalID] is null").AsList();
+        }
+        public static List<Diet> GetDiets(Animal animal)
+        {
+            return connection.Query<Diet>($"select * from Diet " +
+                                          $"where AnimalID = {animal.AnimalID}").AsList();
+        }
+        public static void RemoveAviary(int aviaryID)
+        {
+            connection.Query($"delete[dbo].[Aviary] where [AviaryID] = {aviaryID}");
         }
     }
 }

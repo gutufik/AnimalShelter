@@ -47,5 +47,10 @@ namespace AnimalShelter.Controllers
             DataAccess.AddAnimalToAviary(model);
             return RedirectToAction("Animals", new { aviaryID = model.aviary.AviaryID });
         }
+        public IActionResult RemoveAviary(int aviaryID)
+        {
+            AviaryStorage.RemoveAviary(aviaryID);
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -12,12 +12,12 @@ namespace AnimalShelter.Controllers
     {
         public IActionResult Index()
         {
-            return View(DataAccess.GetAnimals());
+            return View(AviaryStorage.GetAnimals());
         }
         public IActionResult Remove(int id)
         {
-            DataAccess.DeleteAnimal(id);
-            return RedirectToAction("Index",DataAccess.GetAnimals());
+            AviaryStorage.DeleteAnimal(id);
+            return RedirectToAction("Index", AviaryStorage.GetAnimals());
         }
         public IActionResult Feed(int id)
         {
@@ -32,7 +32,7 @@ namespace AnimalShelter.Controllers
         public IActionResult Feed(FeedModel feed)
         {
             DataAccess.AddDiet(feed);
-            return RedirectToAction("Index", DataAccess.GetAnimals());
+            return RedirectToAction("Index", AviaryStorage.GetAnimals());
         }
         public IActionResult Add()
         {
@@ -42,7 +42,7 @@ namespace AnimalShelter.Controllers
         public IActionResult Add(Animal animal)
         {
             DataAccess.AddAnimal(animal);
-            return RedirectToAction("Index", DataAccess.GetAnimals());
+            return RedirectToAction("Index", AviaryStorage.GetAnimals());
         }
     }
 }
