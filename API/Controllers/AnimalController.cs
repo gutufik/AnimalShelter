@@ -20,7 +20,7 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public ActionResult<Animal> Get(int id)
         {
-            var result = DataAccess.GetAnimal(id);
+            var result = AviaryStorage.GetAnimal(id);
             if (result == null)
                 return NotFound();
 
@@ -29,14 +29,14 @@ namespace API.Controllers
         [HttpPost]
         public IActionResult Create(Animal animal)
         {
-            DataAccess.AddAnimal(animal);
+            AviaryStorage.AddAnimal(animal);
             return NoContent();
         }
 
         [HttpPut("{id}")]
         public IActionResult Update(int id, Animal animal)
         {
-            var result = DataAccess.GetAnimal(id);
+            var result = AviaryStorage.GetAnimal(id);
             if (result == null)
                 return NotFound();
 
@@ -48,7 +48,7 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var result = DataAccess.GetAnimal(id);
+            var result = AviaryStorage.GetAnimal(id);
             if (result == null)
                 return NotFound();
 
