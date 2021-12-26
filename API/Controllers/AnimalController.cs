@@ -15,7 +15,7 @@ namespace API.Controllers
         [HttpGet]
         public IEnumerable<Animal> Get()
         {
-            return DataAccess.GetAnimals();
+            return AviaryStorage.GetAnimals();
         }
         [HttpGet("{id}")]
         public ActionResult<Animal> Get(int id)

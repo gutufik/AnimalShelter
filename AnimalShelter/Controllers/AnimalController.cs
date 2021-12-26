@@ -23,15 +23,15 @@ namespace AnimalShelter.Controllers
         {
             var feedModel = new FeedModel()
             {
-                animal = DataAccess.GetAnimal(id),
-                foods = DataAccess.GetFood()
+                animal = AviaryStorage.GetAnimal(id),
+                foods = FoodStorage.Foods
             };
             return View(feedModel);
         }
         [HttpPost]
         public IActionResult Feed(FeedModel feed)
         {
-            DataAccess.AddDiet(feed);
+            FoodStorage.AddDiet(feed);
             return RedirectToAction("Index", AviaryStorage.GetAnimals());
         }
         public IActionResult Add()

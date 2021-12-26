@@ -7,7 +7,7 @@ namespace ConsoleInterface
     {
         static void Main(string[] args)
         {
-            DataAccess.GetAnimals();
+            //DataAccess.GetAnimals();
             Console.WriteLine("Hello World!");
         }
     }
