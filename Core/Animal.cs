@@ -12,11 +12,11 @@ namespace Core
         public List<Diet> Diets { get; set; }
         public Animal()
         {
-            Diets = DataAccess.GetDiets(this);
+            Diets = FoodStorage.GetDiets(this);
         }
         public void AddDiet(FeedModel model)
         {
-            DataAccess.AddDiet(model);
+            FoodStorage.AddDiet(model);
         }
 
     }

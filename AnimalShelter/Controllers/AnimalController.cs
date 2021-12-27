@@ -41,7 +41,7 @@ namespace AnimalShelter.Controllers
         [HttpPost]
         public IActionResult Add(Animal animal)
         {
-            DataAccess.AddAnimal(animal);
+            AviaryStorage.AddAnimal(animal);
             return RedirectToAction("Index", AviaryStorage.GetAnimals());
         }
     }

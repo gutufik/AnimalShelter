@@ -7,7 +7,7 @@ namespace Core
 {
     public static class FoodStorage
     {
-        public static List<Food> Foods { get; set; } = DataAccess.GetFood();
+        public static List<Food> Foods { get; set; } = GetFood();
 
         public static void AddDiet(FeedModel feed)
         {

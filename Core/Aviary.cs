@@ -11,18 +11,17 @@ namespace Core
         public string Name { get; set; }
         public static List<Animal> Animals { get; private set; }
 
-        public void FillAviary() //!!!!!!!!!!
+        public void FillAviary()
         {
             Animals = DataAccess.GetAnimalsInAviary(AviaryID);
         }
         public void AddAnimal(Animal animal)
         {
-            var model = new AviaryModel() { animal = animal, aviary = this };
-            DataAccess.AddAnimalToAviary(model);
+            AviaryStorage.AddAnimalToAviary(AviaryID, animal.AnimalID);
         }
         public void RemoveAnimal(Animal animal)
         {
-            DataAccess.RemoveAnimalFromAviary(animal.AnimalID);        
+            AviaryStorage.RemoveAnimalFromAviary(animal.AnimalID);        
         }
         public List<Animal> GetAnimals()
         {

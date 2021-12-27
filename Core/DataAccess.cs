@@ -34,26 +34,6 @@ namespace Core
         {
             return connection.Query<Food>("select * from Food").AsList();
         }
-        public static bool IsLoginCorrect(LoginModel model)
-        {
-            
-            return connection.Query<User>("SELECT * FROM [dbo].[User] u " +
-                                            $"where u.[Email] = '{model.Email}'" +
-                                            $"and u.[Password] = '{model.Password}'").AsList().Count > 0;
-        }
-        public static bool RegisterUser(RegisterModel model)
-        {
-            try
-            {
-                connection.Query($"insert into [dbo].[User] (Email, [Password]) " +
-                    $"values('{model.Email}', '{model.Password}')");
-                return true;
-            }
-            catch 
-            {
-                return false;
-            }
-        }
         public static void DeleteAnimal(int id)
         {
             connection.Query($"delete from [dbo].[Animal] where [AnimalID] = {id}");

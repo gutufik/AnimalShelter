@@ -18,33 +18,33 @@ namespace AnimalShelter.Controllers
         {
             var model = new AviaryModel() 
             { 
-                animals = DataAccess.GetAnimalsInAviary(aviaryID), //!!!!!!!!!!
+                animals = AviaryStorage.GetAnimalsInAviary(aviaryID), //!!!!!!!!!!
                 aviary = new Aviary { AviaryID = aviaryID }
             };
             return View(model);
         }
         public IActionResult AddAviary()
         {
-            DataAccess.AddAviary(); //!!!!!!!!!!!!!!!!!!
+            AviaryStorage.AddAviary(); //!!!!!!!!!!!!!!!!!!
             return RedirectToAction("Index");
         }
         public IActionResult Remove(int animalID)
         {
-            int aviaryID = DataAccess.RemoveAnimalFromAviary(animalID); //!!!!!!!!!!!!!!!
+            int aviaryID = AviaryStorage.RemoveAnimalFromAviary(animalID); 
             return RedirectToAction("Animals", new { aviaryID = aviaryID });
         }
         public IActionResult AddAnimal(int aviaryID)
         {
             var model = new AviaryModel();
             model.aviary = new Aviary() { AviaryID = aviaryID };
-            model.animals = DataAccess.GetHomelessAnimals(); //!!!!!!!!!!!!!!!!!!!
+            model.animals = AviaryStorage.GetHomelessAnimals(); 
             
             return View(model);
         }
         [HttpPost]
         public IActionResult AddAnimal(AviaryModel model)
         {
-            DataAccess.AddAnimalToAviary(model); //!!!!!!!!!!!!!!!!!!!!!
+            AviaryStorage.AddAnimalToAviary(model.aviary.AviaryID, model.animal.AnimalID); 
             return RedirectToAction("Animals", new { aviaryID = model.aviary.AviaryID });
         }
         public IActionResult RemoveAviary(int aviaryID)

@@ -40,7 +40,7 @@ namespace API.Controllers
             if (result == null)
                 return NotFound();
 
-            DataAccess.UpdateAnimal(id, animal);
+            AviaryStorage.UpdateAnimal(id, animal);
 
             return NoContent();
         }
@@ -52,7 +52,7 @@ namespace API.Controllers
             if (result == null)
                 return NotFound();
 
-            DataAccess.DeleteAnimal(id);
+            AviaryStorage.DeleteAnimal(id);
             return NoContent();
         }
     }
