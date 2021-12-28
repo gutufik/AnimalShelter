@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Dapper;
 using System.Data;
+using System.Linq;
 using System.Data.SqlClient;
 using System.Configuration;
 using Core.ViewModels;
@@ -43,14 +44,20 @@ namespace Core
             try
             {
                 return connection.Query<Animal>($"select * from [dbo].[Animal]" +
-                $" where [AnimalID] = {id}").AsList()[0];
+                $" where [AnimalID] = {id}").AsList().FirstOrDefault();
             }
             catch { return null; }
             
         }
+        public static bool CanFeed(FeedModel model)
+        {
+            return connection.Query<bool>($"select cast(case when [weight] > {model.diet.Weight} THEN 1 ELSE 0 END AS BIT) " +
+                $"from Food where FoodID = {model.diet.FoodID}").AsList().FirstOrDefault();
+        }
         public static void AddDiet(FeedModel model)
         {
-            connection.Query("insert into [dbo].[Diet] " +
+            if (CanFeed(model))
+                connection.Query("insert into [dbo].[Diet] " +
                             "([AnimalID],[Date],[FoodID],[Weight]) " +
                             $"values ({model.diet.AnimalID},'{DateTime.Now}',{model.diet.FoodID},{model.diet.Weight})");
         }
@@ -64,7 +71,8 @@ namespace Core
         }
         public static void AddFood(Food food) 
         {
-            connection.Query($"insert into [dbo].[Food]" +
+            if (food.Weight > 0)
+                connection.Query($"insert into [dbo].[Food]" +
                             $"([FoodName], [Weight])" +
                             $"values ('{food.FoodName}',{food.Weight})");
         }
