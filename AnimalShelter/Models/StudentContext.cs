@@ -6,7 +6,7 @@ using System.Data.Entity;
 
 namespace AnimalShelter.Models
 {
-    public class StudentContext : DbContext
+    public class StudentContext : DbContext // плохо: класс нигде не использется 
     {
         public DbSet<Student> Students { get; set; }
     }

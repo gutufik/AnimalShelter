@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AnimalShelter.Models
 {
-    public class Student
+    public class Student // плохо: пустой класс
     {
     }
 }

@@ -7,7 +7,8 @@ using Core;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace API.Controllers
+namespace API.Controllers // можно лучше: лишние комментарии
+    // хорошо: код самокомментируемый 
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core;
 
-namespace API.Controllers
+namespace API.Controllers // хорощее решение: контроллер обращается к функциям ядра 
 {
     [Route("api/[controller]")]
     [ApiController]

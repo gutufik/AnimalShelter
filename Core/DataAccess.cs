@@ -10,7 +10,7 @@ using Core.ViewModels;
 
 namespace Core
 {
-    public static class DataAccess
+    public static class DataAccess // можно улучшить: решение запросами не оптимальный метод
     {
         private static string connStr = ConfigurationManager.ConnectionStrings["AnimalDB"].ConnectionString;
         private static IDbConnection connection = new SqlConnection(connStr);

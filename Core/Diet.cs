@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Core
 {
-    public class Diet
+    public class Diet // можно лучше: сделать приватными set которые не должны торсать наружу 
     {
         public int AnimalID { get; set; }
         public DateTime Date { get; set; }

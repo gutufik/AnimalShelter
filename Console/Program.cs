@@ -4,7 +4,7 @@ using Core.ViewModels;
 
 namespace ConsoleInterface
 {
-    class Program
+    class Program // можно лучше: не корректное именование класса 
     {
         static void Main(string[] args)
         {
@@ -82,7 +82,7 @@ namespace ConsoleInterface
                     break;
             }
         }
-        private static void Get(string[] args)
+        private static void Get(string[] args) // хорошо: хорошее решение с кейсами 
         {
             switch (args[1])
             {
