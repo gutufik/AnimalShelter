@@ -16,7 +16,7 @@ namespace Core
         private static IDbConnection connection = new SqlConnection(connStr);
         public static List<Animal> GetAnimals()
         {
-            return connection.Query<Animal>("select AnimalID, Name from Animal").AsList();
+            return connection.Query<Animal>("select Id, AnimalName from Animal").AsList();
         }
         public static List<Aviary> GetAviaries()
         {
@@ -24,9 +24,9 @@ namespace Core
         }
         public static List<Animal> GetAnimalsInAviary(int aviaryId)
         {
-            return connection.Query<Animal>("select an.AnimalID, an.[Name] from [dbo].[Animal] an" +
+            return connection.Query<Animal>("select an.Id, an.[AnimalName] from [dbo].[Animal] an" +
                                             " join[dbo].[AviaryAnimal] aa " +
-                                            "on aa.AnimalID = an.AnimalID " +
+                                            "on aa.AnimalID = an.Id " +
                                             "join [dbo].[Aviary] av " +
                                             "on aa.AviaryID = av.AviaryID " +
                                             $"where av.AviaryID = {aviaryId}").AsList();
@@ -37,14 +37,14 @@ namespace Core
         }
         public static void DeleteAnimal(int id)
         {
-            connection.Query($"delete from [dbo].[Animal] where [AnimalID] = {id}");
+            connection.Query($"delete from [dbo].[Animal] where [Id] = {id}");
         }
         public static Animal GetAnimal(int id)
         {
             try
             {
                 return connection.Query<Animal>($"select * from [dbo].[Animal]" +
-                $" where [AnimalID] = {id}").AsList().FirstOrDefault();
+                $" where [Id] = {id}").AsList().FirstOrDefault();
             }
             catch { return null; }
             
@@ -58,7 +58,7 @@ namespace Core
         {
             if (CanFeed(model))
                 connection.Query("insert into [dbo].[Diet] " +
-                            "([AnimalID],[Date],[FoodID],[Weight]) " +
+                            "([AnimalID],[Date],[FoodId],[Weight]) " +
                             $"values ({model.diet.AnimalID},'{DateTime.Now}',{model.diet.FoodID},{model.diet.Weight})");
         }
         public static void AddAnimal(Animal a)
@@ -67,7 +67,7 @@ namespace Core
         }
         public static void UpdateAnimal(int id,Animal a)
         {
-            connection.Query($"update [dbo].[Animal] set [Name] = '{a.Name}' where [AnimalID] = {id}");
+            connection.Query($"update [dbo].[Animal] set [AnimalName] = '{a.Name}' where [AnimalID] = {id}");
         }
         public static void AddFood(Food food) 
         {

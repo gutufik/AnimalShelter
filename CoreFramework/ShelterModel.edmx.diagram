@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e8b7a581920f48159e67f45571d304d2" Name="Diagram1" ZoomLevel="124">
+        <EntityTypeShape EntityType="animal_shelterModel.Animal" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="animal_shelterModel.aviary" Width="1.5" PointX="2.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="animal_shelterModel.aviary_animal" Width="1.5" PointX="5.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="animal_shelterModel.Category" Width="1.5" PointX="5.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="animal_shelterModel.Clerk_Zone" Width="1.5" PointX="10.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="animal_shelterModel.ClimatZone" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="animal_shelterModel.Diet" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="animal_shelterModel.FeedType" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="animal_shelterModel.Food" Width="1.5" PointX="4.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="animal_shelterModel.sysdiagram" Width="1.5" PointX="7.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="animal_shelterModel.User" Width="1.5" PointX="8" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="animal_shelterModel.Zone_Animal" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="animal_shelterModel.FK_Diet_Animal" ManuallyRouted="false" />
+        <AssociationConnector Association="animal_shelterModel.FK_Zone_Animal_Animal" ManuallyRouted="false" />
+        <AssociationConnector Association="animal_shelterModel.FK_Clerk_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="animal_shelterModel.FK_Cleck_Animal_Clerk" ManuallyRouted="false" />
+        <AssociationConnector Association="animal_shelterModel.FK_Clerk_Zone_ClimatZone" ManuallyRouted="false" />
+        <AssociationConnector Association="animal_shelterModel.FK_Zone_Animal_ClimatZone" ManuallyRouted="false" />
+        <AssociationConnector Association="animal_shelterModel.FK_Diet_FeedType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
