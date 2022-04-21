@@ -53,10 +53,11 @@
     <Compile Include="Animal.cs">
       <DependentUpon>ShelterModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="animal_shelterEntities.cs" />
     <Compile Include="Aviary.cs">
       <DependentUpon>ShelterModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DataAccess.cs" />
     <Compile Include="Diet.cs">
       <DependentUpon>ShelterModel.tt</DependentUpon>
     </Compile>

@@ -99,7 +99,7 @@ namespace ConsoleInterface
                         Console.WriteLine($"{a.AnimalID} {a.Name}");
                     break;
                 case "food":
-                    foreach (var f in FoodStorage.GetFood())
+                    foreach (var f in FoodStorage.GetFoods())
                         Console.WriteLine($"{f.FoodID} {f.FoodName} {f.Weight}");
                     break;
                 case "animal":

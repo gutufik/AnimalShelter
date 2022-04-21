@@ -11,7 +11,7 @@ namespace AnimalShelter.Controllers
     {
         public IActionResult Index()
         {
-            return View(FoodStorage.GetFood());
+            return View(FoodStorage.GetFoods());
         }
         public IActionResult Add()
         {

@@ -17,7 +17,7 @@ namespace API.Controllers
         [HttpGet]
         public IEnumerable<Food> Get()
         {
-            return FoodStorage.GetFood();
+            return FoodStorage.GetFoods();
         }
         // POST api/<FoodController>
         [HttpPost]
