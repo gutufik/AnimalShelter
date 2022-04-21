@@ -12,15 +12,12 @@ namespace Core
     using System;
     using System.Collections.Generic;
     
-    public partial class Diet
+    public partial class sysdiagram
     {
-        public int DietId { get; set; }
-        public System.DateTime Date { get; set; }
-        public int AnimalId { get; set; }
-        public int FoodId { get; set; }
-        public Nullable<int> Weight { get; set; }
-    
-        public virtual Animal Animal { get; set; }
-        public virtual Food Food { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }
