@@ -1,6 +1,6 @@
-﻿@model Core.ViewModels.AviaryModel
+﻿model Core.ViewModels.AviaryModel
 <h2>Животные в вольере</h2>
-<input type="hidden" asp-for="aviary.AviaryID" value=@Model.aviary.AviaryID>
+<input type="hidden" >
 <div class="row justify-content-end">
     <a class="btn btn-primary" asp-controller="Aviary"
        asp-action="AddAnimal" asp-route-aviaryID=@Model.aviary.AviaryID role="button">Добавить</a>

@@ -13,16 +13,16 @@
             <div class="card h-100">
                 <div class="card-body">
                     <div>
-                        <p class="font-weight-normal" style="text-align:center">@animal.Name</p>
+                        <p class="font-weight-normal" style="text-align:center">@animal.AnimalName</p>
                     </div>
                     <div class="text-center">
                         <a class="btn btn-danger" asp-controller="Animal"
-                           asp-action="Remove" asp-route-id="@animal.AnimalID"
+                           asp-action="Remove" asp-route-id="@animal.Id"
                            role="button">
                             Забрать из приюта
                         </a>
                         <a class="btn btn-secondary" asp-controller="Animal"
-                           asp-action="Feed" asp-route-id="@animal.AnimalID"
+                           asp-action="Feed" asp-route-id="@animal.Id"
                            role="button">
                             Покормить
                         </a>

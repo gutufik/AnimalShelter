@@ -11,7 +11,7 @@ namespace AnimalShelter.Controllers
     {
         public IActionResult Index()
         {
-            return View(FoodStorage.GetFoods());
+            return View(DataAccess.GetFoods());
         }
         public IActionResult Add()
         {
@@ -20,8 +20,8 @@ namespace AnimalShelter.Controllers
         [HttpPost]
         public IActionResult Add(Food food)
         {
-            FoodStorage.AddFood(food);
-            return RedirectToAction("Index", FoodStorage.GetFood());
+            DataAccess.AddFood(food);
+            return RedirectToAction("Index", DataAccess.GetFoods());
         }
     }
 }

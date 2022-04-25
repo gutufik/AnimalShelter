@@ -1,5 +1,6 @@
-﻿@model Core.ViewModels.AviaryModel
+﻿model Core.ViewModels.AviaryModel
 
+@using Core;
 <h2>Добавить питомца</h2>
 
 <form asp-action="AddAnimal" asp-controller="Aviary" asp-anti-forgery="true">
@@ -9,12 +10,12 @@
             <label>Имя</label><br />
             <input type="text" asp-for="Name">
         </div>*@
-        <input type="hidden" asp-for="aviary.AviaryID" value=@Model.aviary.AviaryID>
+        <!--<input type="hidden" asp-for="aviary.AviaryID" value=@Model.aviary.AviaryID>-->
         <div class="form-group">
-            <select asp-for="animal.AnimalID">
-                @foreach (var a in Model.animals)
+            <select>
+                @foreach (var a in DataAccess.GetAnimals())
                 {
-                    <option value="@a.AnimalID">@a.Name</option>
+                    <option value="@a.Id">@a.AnimalName</option>
                 }
             </select>
         </div><br />

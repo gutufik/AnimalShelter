@@ -17,14 +17,14 @@
                     <div style="text-align:right">
                         <a asp-controller="Aviary"
                            asp-action="RemoveAviary" 
-                           asp-route-aviaryID="@aviary.AviaryID">❌</a>
+                           asp-route-aviaryID="@aviary.Id">❌</a>
                     </div>
                     <div>
                         <p class="font-weight-normal" style="text-align:center">@aviary.Name</p>
                     </div>
                     <div class="text-center">
                         <a class="btn btn-danger" asp-controller="Aviary"
-                           asp-action="Animals" asp-route-aviaryID="@aviary.AviaryID"
+                           asp-action="Animals" asp-route-aviaryID="@aviary.Id"
                            role="button">
                             Показать животных
                         </a>

@@ -1,4 +1,5 @@
-﻿@model Core.ViewModels.FeedModel
+﻿model Core.ViewModels.FeedModel
+@using Core
 
 <h2>Покормить</h2>
 
@@ -7,20 +8,20 @@
     <div>
 
         <div class="form-group">
-            <label >@Model.animal.Name</label>
-            <input type="hidden" asp-for="diet.AnimalID" value=@Model.animal.AnimalID>
+            <label >Animal</label>
+            <!--<input type="hidden" asp-for="diet.AnimalID" value=@Model.animal.AnimalID>-->
         </div>
         <div class="form-group">
-            <select asp-for="diet.FoodID">
-                @foreach (var f in Model.foods)
+            <select >
+                @foreach (var f in DataAccess.GetFoods())
                 {
-                    <option value="@f.FoodID">@f.FoodName</option>
+                    <option value="@f.Id">@f.FoodName</option>
                 }
             </select>
         </div>
         <div class="form-group">
-            <label asp-for="diet.Weight">Вес</label><br />
-            <input type="text" asp-for="diet.Weight" />
+            <label >Вес</label><br />
+            <input type="text"  />
         </div>
         <div class="form-group">
             <input type="submit" value="Покормить" class="btn btn-outline-dark" />

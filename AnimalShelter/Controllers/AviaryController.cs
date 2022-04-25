@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core;
-using Core.ViewModels;
+
 
 namespace AnimalShelter.Controllers
 {
@@ -12,44 +12,47 @@ namespace AnimalShelter.Controllers
     {
         public IActionResult Index()
         {
-            return View(AviaryStorage.Aviaries);
+            return View(DataAccess.GetAviaries());
         }
         public IActionResult Animals(int aviaryID)
         {
-            var model = new AviaryModel() 
-            { 
-                animals = AviaryStorage.GetAnimalsInAviary(aviaryID), //!!!!!!!!!!
-                aviary = new Aviary { AviaryID = aviaryID }
-            };
-            return View(model);
+            //var model = new AviaryModel() 
+            //{ 
+            //    animals = AviaryStorage.GetAnimalsInAviary(aviaryID), //!!!!!!!!!!
+            //    aviary = new Aviary { AviaryID = aviaryID }
+            //};
+            var aviary = DataAccess.GetAviary(aviaryID);
+            return View(aviary.Animals);
         }
         public IActionResult AddAviary()
         {
-            AviaryStorage.AddAviary(); //!!!!!!!!!!!!!!!!!!
+            var aviary = new Aviary();
+            DataAccess.SaveAviary(aviary); //!!!!!!!!!!!!!!!!!!
             return RedirectToAction("Index");
         }
         public IActionResult Remove(int animalID)
         {
-            int aviaryID = AviaryStorage.RemoveAnimalFromAviary(animalID); 
+            int aviaryID = DataAccess.DeleteAnimalFromAviary(animalID);
+            //int aviaryID = AviaryStorage.RemoveAnimalFromAviary(animalID); 
             return RedirectToAction("Animals", new { aviaryID = aviaryID });
         }
         public IActionResult AddAnimal(int aviaryID)
         {
-            var model = new AviaryModel();
-            model.aviary = new Aviary() { AviaryID = aviaryID };
-            model.animals = AviaryStorage.GetHomelessAnimals(); 
+            //var model = new AviaryModel();
+            //model.aviary = new Aviary() { AviaryID = aviaryID };
+            //model.animals = AviaryStorage.GetHomelessAnimals(); 
             
-            return View(model);
+            return View();
         }
         [HttpPost]
-        public IActionResult AddAnimal(AviaryModel model)
+        public IActionResult AddAnimal()
         {
-            AviaryStorage.AddAnimalToAviary(model.aviary.AviaryID, model.animal.AnimalID); 
-            return RedirectToAction("Animals", new { aviaryID = model.aviary.AviaryID });
+            //AviaryStorage.AddAnimalToAviary(model.aviary.AviaryID, model.animal.AnimalID); 
+            return RedirectToAction("Animals");
         }
         public IActionResult RemoveAviary(int aviaryID)
         {
-            AviaryStorage.RemoveAviary(aviaryID);
+            DataAccess.DeleteAviary(aviaryID);
             return RedirectToAction("Index");
         }
     }

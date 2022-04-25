@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core;
-using Core.ViewModels;
+
 
 namespace AnimalShelter.Controllers
 {
@@ -12,27 +12,28 @@ namespace AnimalShelter.Controllers
     {
         public IActionResult Index()
         {
-            return View(AviaryStorage.GetAnimals());
+            return View(DataAccess.GetAnimals());
         }
         public IActionResult Remove(int id)
         {
-            AviaryStorage.DeleteAnimal(id);
-            return RedirectToAction("Index", AviaryStorage.GetAnimals());
+            var animal = DataAccess.GetAnimal(id);
+            DataAccess.DeleteAnimal(animal);
+            return RedirectToAction("Index", DataAccess.GetAnimals());
         }
         public IActionResult Feed(int id)
         {
-            var feedModel = new FeedModel()
-            {
-                animal = AviaryStorage.GetAnimal(id),
-                foods = FoodStorage.Foods
-            };
-            return View(feedModel);
+            //var feedModel = new FeedModel()
+            //{
+            //    animal = AviaryStorage.GetAnimal(id),
+            //    foods = FoodStorage.Foods
+            //};
+            return View();
         }
         [HttpPost]
-        public IActionResult Feed(FeedModel feed)
+        public IActionResult Feed()
         {
-            FoodStorage.AddDiet(feed);
-            return RedirectToAction("Index", AviaryStorage.GetAnimals());
+            //FoodStorage.AddDiet(feed);
+            return RedirectToAction("Index", DataAccess.GetAnimals());
         }
         public IActionResult Add()
         {
@@ -41,8 +42,8 @@ namespace AnimalShelter.Controllers
         [HttpPost]
         public IActionResult Add(Animal animal)
         {
-            AviaryStorage.AddAnimal(animal);
-            return RedirectToAction("Index", AviaryStorage.GetAnimals());
+            DataAccess.SaveAnimal(animal);
+            return RedirectToAction("Index", DataAccess.GetAnimals());
         }
     }
 }
